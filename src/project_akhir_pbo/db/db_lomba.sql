@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 01:45 PM
+-- Generation Time: May 29, 2024 at 04:57 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -59,8 +59,7 @@ CREATE TABLE `kelompok` (
 --
 
 INSERT INTO `kelompok` (`kelompok_id`, `nama`, `pass`, `tgl_dibuat`, `status`) VALUES
-(2, 'coba', '12345', '2024-05-28', '0'),
-(3, 'salma', 'cantik', '2024-05-29', '0');
+(1, 'Tim Ngikut', '12345', '2024-05-29', '1');
 
 -- --------------------------------------------------------
 
@@ -81,8 +80,9 @@ CREATE TABLE `member` (
 --
 
 INSERT INTO `member` (`member_id`, `kelompok_id`, `nama`, `umur`, `role`) VALUES
-('3_2', 3, 'ageng', 23, '1'),
-('3_3', 3, 'yusuf', 20, '0');
+('1_1', 1, 'Afif', 20, '1'),
+('1_3', 1, 'Arya', 19, '0'),
+('1_4', 1, 'Yusuf', 20, '0');
 
 --
 -- Indexes for dumped tables
@@ -98,13 +98,15 @@ ALTER TABLE `admin`
 -- Indexes for table `kelompok`
 --
 ALTER TABLE `kelompok`
-  ADD PRIMARY KEY (`kelompok_id`);
+  ADD PRIMARY KEY (`kelompok_id`),
+  ADD UNIQUE KEY `nama` (`nama`);
 
 --
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
-  ADD PRIMARY KEY (`member_id`);
+  ADD PRIMARY KEY (`member_id`),
+  ADD UNIQUE KEY `nama` (`nama`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -120,7 +122,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kelompok`
 --
 ALTER TABLE `kelompok`
-  MODIFY `kelompok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `kelompok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

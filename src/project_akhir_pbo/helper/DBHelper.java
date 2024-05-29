@@ -73,7 +73,7 @@ public class DBHelper {
         return value;
     }
     
-    public List<AnggotaModel> getAllAnggota(String kelompokId){
+    public List<AnggotaModel> getAllMember(String kelompokId){
         List<AnggotaModel> data = new ArrayList<>();
         query = "SELECT * FROM member WHERE kelompok_id = " + kelompokId + "";
         
@@ -95,15 +95,15 @@ public class DBHelper {
         return data;
     }
     
-    private String generateIdAnggota(String kelompok){
+    private String generateIdMember(String kelompok){
         String value = "";
         
-        query = "SELECT anggota_id from member WHERE kelompok_id = " + kelompok + " ORDER BY member_id DESC LIMIT 1";
+        query = "SELECT member_id from member WHERE kelompok_id = " + kelompok + " ORDER BY member_id DESC LIMIT 1";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
             if(rs.next()){
-                value = kelompok + "_" + (Integer.parseInt(rs.getString("anggota_id").split("_")[1]) + 1);
+                value = kelompok + "_" + (Integer.parseInt(rs.getString("member_id").split("_")[1]) + 1);
             }else{
                 value = kelompok + "_1";
             }
@@ -116,14 +116,14 @@ public class DBHelper {
         return value;
     }
     
-    public boolean addNewAnggota(String kelompok, String name, String umur, String role){
+    public boolean addNewMember(String kelompok, String name, String umur, String role){
         //Cek apakah sudah ada ketua jika memasukkan role ketua
         if(isAnyKetua(kelompok) && role.equals("1")){
             return false;
         }
         boolean value = false;
         
-        String id = generateIdAnggota(kelompok);
+        String id = generateIdMember(kelompok);
         query = "INSERT into member SET member_id = '" + id + "', kelompok_id = " + kelompok + ", nama = '" + name + "', umur = " + umur + ", role = '" + role + "'";
         try {
             stmt = conn.createStatement();
@@ -138,7 +138,7 @@ public class DBHelper {
         return value;
     }
     
-    public boolean updateAnggota(String kelompok, String id, String nama, String umur, String role) {
+    public boolean updateMember(String kelompok, String id, String nama, String umur, String role) {
         //Cek apakah sudah ada ketua jika memasukkan role ketua
         if(isAnyKetua(kelompok) && role.equals("1")){
             return false;
@@ -158,7 +158,7 @@ public class DBHelper {
         return value;
     }
 
-    public boolean deleteAnggota(String id) {
+    public boolean deleteMember(String id) {
         boolean value = false;
         query = "DELETE FROM member WHERE member_id =\"" + id + "\"";
         try {

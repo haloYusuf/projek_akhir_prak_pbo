@@ -39,7 +39,7 @@ public class KelompokMainController {
             System.out.println("Data harus ada isi");
         }else{
             DBHelper helper = new DBHelper();
-            if(helper.addNewAnggota(TempData.kelompokID, nama, umur, role)){
+            if(helper.addNewMember(TempData.kelompokID, nama, umur, role)){
                 System.out.println("Berhasil add data!");
                 refreshTable();
             }else{
@@ -57,7 +57,7 @@ public class KelompokMainController {
                 JOptionPane.showMessageDialog(v, "Data harus ada isi", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
                 DBHelper helper = new DBHelper();
-                if (helper.updateAnggota(TempData.kelompokID, id, nama, umur, role)) {
+                if (helper.updateMember(TempData.kelompokID, id, nama, umur, role)) {
                     JOptionPane.showMessageDialog(v, "berhasil diupdate", "Success", JOptionPane.INFORMATION_MESSAGE);
                     refreshTable();
                 } else {
@@ -73,7 +73,7 @@ public class KelompokMainController {
         if (row != -1) {
             String id = model.getValueAt(row, 0).toString(); //Ambil data id sesuai data tabel yang di klick
             DBHelper helper = new DBHelper();
-            if (helper.deleteAnggota(id)) {
+            if (helper.deleteMember(id)) {
                 JOptionPane.showMessageDialog(v, "berhasil dihapus", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refreshTable();
             } else {
@@ -95,7 +95,7 @@ public class KelompokMainController {
         model.setRowCount(0);
         DBHelper helper = new DBHelper();
         
-        List<AnggotaModel> data = helper.getAllAnggota(TempData.kelompokID);
+        List<AnggotaModel> data = helper.getAllMember(TempData.kelompokID);
         data.forEach((m) -> {
             model.addRow(new Object[]{m.getId(), m.getNama(), m.getUmur(), m.getRole()});
         });

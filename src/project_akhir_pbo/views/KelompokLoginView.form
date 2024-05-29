@@ -81,7 +81,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="LOGIN PESERTA"/>
+        <Property name="text" type="java.lang.String" value="LOGIN KELOMPOK"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="namaField">
@@ -113,12 +113,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Username Tim"/>
+        <Property name="text" type="java.lang.String" value="Nama Kelompok"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Password Tim"/>
+        <Property name="text" type="java.lang.String" value="Password Kelompok"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passField">

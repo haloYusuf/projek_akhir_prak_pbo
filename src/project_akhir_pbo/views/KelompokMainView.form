@@ -104,7 +104,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data Peserta"/>
+        <Property name="text" type="java.lang.String" value="Data Anggota Kelompok"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

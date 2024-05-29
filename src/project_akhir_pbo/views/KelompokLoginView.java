@@ -45,7 +45,7 @@ public class KelompokLoginView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("LOGIN PESERTA");
+        jLabel1.setText("LOGIN KELOMPOK");
 
         namaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -69,9 +69,9 @@ public class KelompokLoginView extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Username Tim");
+        jLabel2.setText("Nama Kelompok");
 
-        jLabel3.setText("Password Tim");
+        jLabel3.setText("Password Kelompok");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

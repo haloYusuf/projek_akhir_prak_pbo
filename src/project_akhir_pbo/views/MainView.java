@@ -41,7 +41,7 @@ public class MainView extends javax.swing.JFrame {
         jLabel1.setText("PROGRAM DATA PESERTA LOMBA");
 
         pesertaButton.setBackground(new java.awt.Color(204, 204, 204));
-        pesertaButton.setText("Peserta");
+        pesertaButton.setText("Kelompok Peserta");
         pesertaButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pesertaButtonMouseClicked(evt);

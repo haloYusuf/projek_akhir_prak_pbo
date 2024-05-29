@@ -38,14 +38,14 @@ public class AdminMainView extends javax.swing.JFrame {
         dataTableDone = new javax.swing.JTable();
         accButton = new javax.swing.JButton();
         detailButton = new javax.swing.JButton();
+        tolakButton = new javax.swing.JButton();
         dissButton = new javax.swing.JButton();
-        batalButton = new javax.swing.JButton();
         detailDoneButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jLabel1.setText("Data Team yang belum di Acc");
+        jLabel1.setText("Data Kelompok Belum Dikonfirmasi");
 
         dataTableRequst.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -65,7 +65,7 @@ public class AdminMainView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(dataTableRequst);
 
-        jLabel2.setText("Data Team yang sudah di Acc");
+        jLabel2.setText("Data Kelompok Sudah Dikonfirmasi");
 
         dataTableDone.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,6 +111,19 @@ public class AdminMainView extends javax.swing.JFrame {
             }
         });
 
+        tolakButton.setBackground(new java.awt.Color(204, 204, 204));
+        tolakButton.setText("Tolak");
+        tolakButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tolakButtonMouseClicked(evt);
+            }
+        });
+        tolakButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tolakButtonActionPerformed(evt);
+            }
+        });
+
         dissButton.setBackground(new java.awt.Color(204, 204, 204));
         dissButton.setText("Diskualifikasi");
         dissButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,19 +134,6 @@ public class AdminMainView extends javax.swing.JFrame {
         dissButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dissButtonActionPerformed(evt);
-            }
-        });
-
-        batalButton.setBackground(new java.awt.Color(204, 204, 204));
-        batalButton.setText("Batal");
-        batalButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                batalButtonMouseClicked(evt);
-            }
-        });
-        batalButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                batalButtonActionPerformed(evt);
             }
         });
 
@@ -162,10 +162,6 @@ public class AdminMainView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -177,10 +173,10 @@ public class AdminMainView extends javax.swing.JFrame {
                         .addGap(88, 88, 88)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(accButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(tolakButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dissButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(accButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -189,10 +185,14 @@ public class AdminMainView extends javax.swing.JFrame {
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(44, 44, 44))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(batalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(dissButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(detailDoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(94, 94, 94))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,14 +208,14 @@ public class AdminMainView extends javax.swing.JFrame {
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(detailDoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(batalButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dissButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(accButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dissButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tolakButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(detailButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGap(37, 37, 37)
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,6 +245,14 @@ public class AdminMainView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_detailButtonActionPerformed
 
+    private void tolakButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tolakButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tolakButtonMouseClicked
+
+    private void tolakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tolakButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tolakButtonActionPerformed
+
     private void dissButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dissButtonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_dissButtonMouseClicked
@@ -252,14 +260,6 @@ public class AdminMainView extends javax.swing.JFrame {
     private void dissButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dissButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dissButtonActionPerformed
-
-    private void batalButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_batalButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_batalButtonMouseClicked
-
-    private void batalButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_batalButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_batalButtonActionPerformed
 
     private void detailDoneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailDoneButtonMouseClicked
         // TODO add your handling code here:
@@ -276,7 +276,6 @@ public class AdminMainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accButton;
-    private javax.swing.JButton batalButton;
     private javax.swing.JTable dataTableDone;
     private javax.swing.JTable dataTableRequst;
     private javax.swing.JButton detailButton;
@@ -287,5 +286,6 @@ public class AdminMainView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JButton tolakButton;
     // End of variables declaration//GEN-END:variables
 }

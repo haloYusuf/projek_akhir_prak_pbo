@@ -56,7 +56,7 @@ public class KelompokMainView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jLabel1.setText("Data Peserta");
+        jLabel1.setText("Data Anggota Kelompok");
 
         dataTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

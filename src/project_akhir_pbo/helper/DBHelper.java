@@ -7,7 +7,7 @@ package project_akhir_pbo.helper;
 import java.sql.*;
 import java.util.*;
 import project_akhir_pbo.models.AnggotaModel;
-import project_akhir_pbo.models.TempKelompok;
+import project_akhir_pbo.models.TempData;
 
 /**
  *
@@ -41,7 +41,8 @@ public class DBHelper {
             rs = stmt.executeQuery(query);
             if(rs.next()){
                 value = true;
-                TempKelompok.id = rs.getString("kelompok_id");
+                TempData.kelompokID = rs.getString("kelompok_id");
+                TempData.kelompokStatus = rs.getString("status");
             }
             stmt.close();
         } catch (SQLException e) {
@@ -65,7 +66,6 @@ public class DBHelper {
                 value = true;
             }
             stmt.close();
-            checkPesertaLogin(name, pass);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -85,6 +85,7 @@ public class DBHelper {
                 anggota.setId(rs.getString("anggota_id"));
                 anggota.setNama(rs.getString("nama"));
                 anggota.setUmur(rs.getString("umur"));
+                anggota.setRole(rs.getString("role").equals("1") ? "Ketua" : "Anggota");
                 data.add(anggota);
             }
             stmt.close();
@@ -92,24 +93,6 @@ public class DBHelper {
             e.printStackTrace();
         }
         return data;
-    }
-    
-    public boolean addNewAnggota(String name, String kelompok, String umur){
-        boolean value = false;
-        
-        String id = generateIdAnggota(kelompok);
-        query = "INSERT into anggota SET anggota_id = '" + id + "', kelompok_id = " + kelompok + ", nama = '" + name + "', umur = " + umur + "";
-        try {
-            stmt = conn.createStatement();
-            if (stmt.executeUpdate(query) > 0) {
-                value = true;
-            }
-            stmt.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        
-        return value;
     }
     
     private String generateIdAnggota(String kelompok){
@@ -133,6 +116,91 @@ public class DBHelper {
         return value;
     }
     
+    public boolean addNewAnggota(String kelompok, String name, String umur, String role){
+        if(isAnyKetua(kelompok) && role.equals("1")){
+            return false;
+        }
+        boolean value = false;
+        
+        String id = generateIdAnggota(kelompok);
+        query = "INSERT into anggota SET anggota_id = '" + id + "', kelompok_id = " + kelompok + ", nama = '" + name + "', umur = " + umur + ", role = '" + role + "'";
+        try {
+            stmt = conn.createStatement();
+            if (stmt.executeUpdate(query) > 0) {
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return value;
+    }
     
+    public boolean updateAnggota(String kelompok, String id, String nama, String umur, String role) {
+        if(isAnyKetua(kelompok) && role.equals("1")){
+            return false;
+        }
+        boolean value = false;
+        
+        query = "UPDATE anggota SET nama = \"" + nama + "\", umur = " + umur + ", role = '" + role + "' WHERE anggota_id =\"" + id + "\"";
+        try {
+            stmt = conn.createStatement();
+            if (stmt.executeUpdate(query) > 0) {
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+    public boolean deleteAnggota(String id) {
+        boolean value = false;
+        query = "DELETE FROM anggota WHERE anggota_id =\"" + id + "\"";
+        try {
+            stmt = conn.createStatement();
+            if (stmt.executeUpdate(query) > 0) {
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+    
+    public boolean isAnyKetua(String id) {
+        boolean value = false;
+        query = "SELECT * FROM anggota WHERE kelompok_id = " + id + " AND role = '1'";
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            if(rs.next()){
+                value = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+
+    // admin
+    public boolean checkAdminLogin(String user, String pass) {
+        boolean value = false;
+        query = "SELECT * FROM admin WHERE user ='" + user + "' AND pass ='" + pass + "'";
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            if (rs.next()) {
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
     
 }

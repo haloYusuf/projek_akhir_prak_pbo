@@ -5,8 +5,10 @@
 package project_akhir_pbo.views;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import project_akhir_pbo.controllers.PesertaMainController;
+import project_akhir_pbo.models.TempData;
 
 /**
  *
@@ -21,7 +23,9 @@ public class PesertaMainView extends javax.swing.JFrame {
     public PesertaMainView(PesertaMainController c) {
         initComponents();
         this.c = c;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (TempData.kelompokStatus.equals("0")) {
+            cetakButton.setEnabled(false);
+        }
     }
 
     /**
@@ -33,6 +37,7 @@ public class PesertaMainView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        posisiButton = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
@@ -43,8 +48,13 @@ public class PesertaMainView extends javax.swing.JFrame {
         tambahButton = new javax.swing.JButton();
         ubahButton = new javax.swing.JButton();
         hapusButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        clearButton = new javax.swing.JButton();
+        ketuaRadioButton = new javax.swing.JRadioButton();
+        anggotaRadioButton = new javax.swing.JRadioButton();
+        cetakButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setText("Data Peserta");
 
@@ -66,13 +76,19 @@ public class PesertaMainView extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(dataTable);
 
-        jLabel2.setText("Nama Anggota");
+        jLabel2.setText("Nama ");
 
-        jLabel3.setText("Umur Anggota");
+        jLabel3.setText("Umur");
 
         namaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaFieldActionPerformed(evt);
+            }
+        });
+
+        umurField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                umurFieldActionPerformed(evt);
             }
         });
 
@@ -91,13 +107,9 @@ public class PesertaMainView extends javax.swing.JFrame {
                 ubahButtonMouseClicked(evt);
             }
         });
-        ubahButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ubahButtonActionPerformed(evt);
-            }
-        });
 
-        hapusButton.setBackground(new java.awt.Color(204, 204, 204));
+        hapusButton.setBackground(new java.awt.Color(255, 51, 51));
+        hapusButton.setForeground(new java.awt.Color(255, 255, 255));
         hapusButton.setText("Hapus");
         hapusButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,55 +122,99 @@ public class PesertaMainView extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setForeground(new java.awt.Color(255, 0, 51));
+        logoutButton.setText("Log out");
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutButtonMouseClicked(evt);
+            }
+        });
+
+        clearButton.setForeground(new java.awt.Color(204, 0, 0));
+        clearButton.setText("clear");
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
+
+        posisiButton.add(ketuaRadioButton);
+        ketuaRadioButton.setText("Ketua");
+
+        posisiButton.add(anggotaRadioButton);
+        anggotaRadioButton.setText("Anggota");
+
+        cetakButton.setBackground(new java.awt.Color(204, 204, 204));
+        cetakButton.setText("Cetak");
+        cetakButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cetakButtonMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cetakButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tambahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ubahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(namaField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(umurField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel1)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(tambahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(ubahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                    .addComponent(umurField, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(ketuaRadioButton)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(anggotaRadioButton))
+                        .addComponent(namaField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(79, 79, 79))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addGap(46, 46, 46)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ketuaRadioButton)
+                            .addComponent(anggotaRadioButton))
+                        .addGap(28, 28, 28)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(namaField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52)
+                        .addGap(18, 18, 18)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(umurField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                        .addComponent(umurField, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(clearButton))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cetakButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tambahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ubahButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(hapusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
 
         pack();
@@ -166,43 +222,105 @@ public class PesertaMainView extends javax.swing.JFrame {
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
         // TODO add your handling code here:
+        int row = dataTable.getSelectedRow();
+        namaField.setText(dataTable.getModel().getValueAt(row, 1).toString());
+        umurField.setText(dataTable.getModel().getValueAt(row, 2).toString());
+        if(dataTable.getModel().getValueAt(row, 3).toString().equals("Ketua")){
+            ketuaRadioButton.setSelected(true);
+        }else{
+            anggotaRadioButton.setSelected(true);
+        }
     }//GEN-LAST:event_dataTableMouseClicked
 
     private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaFieldActionPerformed
 
-    private void ubahButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ubahButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ubahButtonActionPerformed
-
-    private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_hapusButtonActionPerformed
-
     private void tambahButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tambahButtonMouseClicked
         // TODO add your handling code here:
-        c.tambahData(namaField.getText(), umurField.getText());
+        if(ketuaRadioButton.isSelected()){
+            c.tambahData(namaField.getText(), umurField.getText(), "1");
+            posisiButton.clearSelection();
+            namaField.setText("");
+            umurField.setText("");
+        }else if(anggotaRadioButton.isSelected()){
+            c.tambahData(namaField.getText(), umurField.getText(), "0");
+            posisiButton.clearSelection();
+            namaField.setText("");
+            umurField.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this, "Pilih role terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_tambahButtonMouseClicked
 
     private void ubahButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ubahButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTable.getSelectedRow();
+        if(ketuaRadioButton.isSelected()){
+            c.updateData(row, namaField.getText(), umurField.getText(), "1");
+            posisiButton.clearSelection();
+            namaField.setText("");
+            umurField.setText("");
+        }else if(anggotaRadioButton.isSelected()){
+            c.updateData(row, namaField.getText(), umurField.getText(), "0");
+            posisiButton.clearSelection();
+            namaField.setText("");
+            umurField.setText("");
+        }else{
+            JOptionPane.showMessageDialog(this, "Pilih role terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_ubahButtonMouseClicked
 
     private void hapusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hapusButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTable.getSelectedRow();
+        c.deleteData(row);
+        posisiButton.clearSelection();
+        namaField.setText("");
+        umurField.setText("");
     }//GEN-LAST:event_hapusButtonMouseClicked
+
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
+        // TODO add your handling code here:
+        c.logOut();
+    }//GEN-LAST:event_logoutButtonMouseClicked
+
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+        // TODO add your handling code here:
+        posisiButton.clearSelection();
+        namaField.setText("");
+        umurField.setText("");
+    }//GEN-LAST:event_clearButtonMouseClicked
+
+    private void umurFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_umurFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_umurFieldActionPerformed
+
+    private void cetakButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cetakButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cetakButtonMouseClicked
+
+    private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hapusButtonActionPerformed
     public JTable getDataTable() {
         return dataTable;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton anggotaRadioButton;
+    private javax.swing.JButton cetakButton;
+    private javax.swing.JButton clearButton;
     private javax.swing.JTable dataTable;
     private javax.swing.JButton hapusButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton ketuaRadioButton;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JTextField namaField;
+    private javax.swing.ButtonGroup posisiButton;
     private javax.swing.JButton tambahButton;
     private javax.swing.JButton ubahButton;
     private javax.swing.JTextField umurField;

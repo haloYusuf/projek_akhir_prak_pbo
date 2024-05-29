@@ -8,8 +8,9 @@ package project_akhir_pbo.models;
  *
  * @author Hp
  */
-public class TempKelompok {
+public class TempData {
     
-    public static String id = "";
+    public static String kelompokID = "";
+    public static String kelompokStatus = "";
     
 }

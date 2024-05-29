@@ -12,6 +12,7 @@ public class AnggotaModel {
     private String id;
     private String nama;
     private String umur;
+    private String role;
 
     public String getId() {
         return id;
@@ -36,6 +37,13 @@ public class AnggotaModel {
     public void setUmur(String umur) {
         this.umur = umur;
     }
-    
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
    
 }

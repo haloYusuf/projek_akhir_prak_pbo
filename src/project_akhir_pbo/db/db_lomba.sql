@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2024 at 06:06 PM
+-- Generation Time: May 29, 2024 at 12:29 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -43,17 +43,17 @@ CREATE TABLE `anggota` (
   `anggota_id` varchar(100) NOT NULL,
   `kelompok_id` int(11) NOT NULL,
   `nama` varchar(100) NOT NULL,
-  `umur` int(11) NOT NULL
+  `umur` int(11) NOT NULL,
+  `role` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `anggota`
 --
 
-INSERT INTO `anggota` (`anggota_id`, `kelompok_id`, `nama`, `umur`) VALUES
-('1_1', 1, 'coba', 11),
-('1_2', 1, 'coba2', 12),
-('1_3', 1, 'Salma', 2);
+INSERT INTO `anggota` (`anggota_id`, `kelompok_id`, `nama`, `umur`, `role`) VALUES
+('3_2', 3, 'ageng', 23, '1'),
+('3_3', 3, 'yusuf', 20, '0');
 
 -- --------------------------------------------------------
 
@@ -74,8 +74,8 @@ CREATE TABLE `kelompok` (
 --
 
 INSERT INTO `kelompok` (`kelompok_id`, `nama`, `pass`, `tgl_dibuat`, `status`) VALUES
-(1, 'test', '123', '2024-05-28', ''),
-(2, 'coba', '12345', '2024-05-28', '0');
+(2, 'coba', '12345', '2024-05-28', '0'),
+(3, 'salma', 'cantik', '2024-05-29', '0');
 
 --
 -- Indexes for dumped tables
@@ -113,7 +113,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kelompok`
 --
 ALTER TABLE `kelompok`
-  MODIFY `kelompok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kelompok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -31,6 +31,7 @@ public class AdminLoginController {
         } else{
             DBHelper helper = new DBHelper();
             if(helper.checkAdminLogin(user, pass)){
+                v.dispose();
                 new AdminMainController();
             } else {
                 JOptionPane.showMessageDialog(v, "Login gagal, username atau password salah", "Login Error", JOptionPane.ERROR_MESSAGE);

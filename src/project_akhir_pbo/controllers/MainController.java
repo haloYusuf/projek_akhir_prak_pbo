@@ -20,7 +20,7 @@ public class MainController {
     }
     
     public void pesertaView(){
-        new PesertaLoginController();
+        new KelompokLoginController();
     }
     
     public void adminView(){

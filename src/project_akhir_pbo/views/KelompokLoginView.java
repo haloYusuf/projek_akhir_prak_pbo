@@ -5,19 +5,19 @@
 package project_akhir_pbo.views;
 
 import javax.swing.JFrame;
-import project_akhir_pbo.controllers.PesertaLoginController;
+import project_akhir_pbo.controllers.KelompokLoginController;
 
 /**
  *
  * @author Salma Hanifa
  */
-public class PesertaLoginView extends javax.swing.JFrame {
+public class KelompokLoginView extends javax.swing.JFrame {
 
     /**
-     * Creates new form PesertaLoginView
+     * Creates new form KelompokLoginView
      */
-    PesertaLoginController c;
-    public PesertaLoginView(PesertaLoginController c) {
+    KelompokLoginController c;
+    public KelompokLoginView(KelompokLoginController c) {
         initComponents();
         this.c = c;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

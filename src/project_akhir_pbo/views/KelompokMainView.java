@@ -7,20 +7,20 @@ package project_akhir_pbo.views;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import project_akhir_pbo.controllers.PesertaMainController;
+import project_akhir_pbo.controllers.KelompokMainController;
 import project_akhir_pbo.models.TempData;
 
 /**
  *
  * @author Salma Hanifa
  */
-public class PesertaMainView extends javax.swing.JFrame {
+public class KelompokMainView extends javax.swing.JFrame {
 
     /**
-     * Creates new form PesertaMainView
+     * Creates new form KelompokMainView
      */
-    PesertaMainController c;
-    public PesertaMainView(PesertaMainController c) {
+    KelompokMainController c;
+    public KelompokMainView(KelompokMainController c) {
         initComponents();
         this.c = c;
         if (TempData.kelompokStatus.equals("0")) {

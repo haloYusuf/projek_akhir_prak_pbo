@@ -10,24 +10,24 @@ import javax.swing.table.DefaultTableModel;
 import project_akhir_pbo.helper.DBHelper;
 import project_akhir_pbo.models.AnggotaModel;
 import project_akhir_pbo.models.TempData;
-import project_akhir_pbo.views.PesertaMainView;
+import project_akhir_pbo.views.KelompokMainView;
 
 /**
  *
  * @author Hp
  */
-public class PesertaMainController {
+public class KelompokMainController {
     
-    PesertaMainView v;
+    KelompokMainView v;
     private final DefaultTableModel model;
     
-    public PesertaMainController(){
-        String[] header = {"Id", "Nama", "Umur", "Role"};
-        model = new DefaultTableModel(header, 0);
-        refreshTable();
+    public KelompokMainController(){
+        String[] header = {"Id", "Nama", "Umur", "Role"};//Set header table
+        model = new DefaultTableModel(header, 0);//Buat data model untuk table
+        refreshTable();//Manggil fungsi refresh table untuk nampilin data ke table
         
-        v = new PesertaMainView(this);
-        v.getDataTable().setModel(model);
+        v = new KelompokMainView(this);
+        v.getDataTable().setModel(model);//Masukkin model ke tabel UI
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }
@@ -52,7 +52,7 @@ public class PesertaMainController {
     
     public void updateData(int row, String nama, String umur, String role) {
         if (row != -1) {
-            String id = model.getValueAt(row, 0).toString(); 
+            String id = model.getValueAt(row, 0).toString(); //Ambil data id sesuai data tabel yang di klick
             if (nama.isEmpty() || umur.isEmpty()){
                 JOptionPane.showMessageDialog(v, "Data harus ada isi", "Error", JOptionPane.ERROR_MESSAGE);
             }else{
@@ -71,7 +71,7 @@ public class PesertaMainController {
     
     public void deleteData(int row) {
         if (row != -1) {
-            String id = model.getValueAt(row, 0).toString(); 
+            String id = model.getValueAt(row, 0).toString(); //Ambil data id sesuai data tabel yang di klick
             DBHelper helper = new DBHelper();
             if (helper.deleteAnggota(id)) {
                 JOptionPane.showMessageDialog(v, "berhasil dihapus", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -86,6 +86,7 @@ public class PesertaMainController {
     
     public void logOut(){
         v.dispose();
+        //Hapus temporary data
         TempData.kelompokID = "";
         TempData.kelompokStatus= "";
     }

@@ -19,4 +19,8 @@ public class AdminMainController {
         v.setVisible(true);
     }
     
+    public void logOut(){
+        v.dispose();
+    }
+    
 }

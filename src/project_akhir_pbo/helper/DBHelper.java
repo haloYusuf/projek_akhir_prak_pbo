@@ -75,14 +75,14 @@ public class DBHelper {
     
     public List<AnggotaModel> getAllAnggota(String kelompokId){
         List<AnggotaModel> data = new ArrayList<>();
-        query = "SELECT * FROM anggota WHERE kelompok_id = " + kelompokId + "";
+        query = "SELECT * FROM member WHERE kelompok_id = " + kelompokId + "";
         
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
             while(rs.next()){
                 AnggotaModel anggota = new AnggotaModel();
-                anggota.setId(rs.getString("anggota_id"));
+                anggota.setId(rs.getString("member_id"));
                 anggota.setNama(rs.getString("nama"));
                 anggota.setUmur(rs.getString("umur"));
                 anggota.setRole(rs.getString("role").equals("1") ? "Ketua" : "Anggota");
@@ -98,7 +98,7 @@ public class DBHelper {
     private String generateIdAnggota(String kelompok){
         String value = "";
         
-        query = "SELECT anggota_id from anggota WHERE kelompok_id = " + kelompok + " ORDER BY anggota_id DESC LIMIT 1";
+        query = "SELECT anggota_id from member WHERE kelompok_id = " + kelompok + " ORDER BY member_id DESC LIMIT 1";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);
@@ -117,13 +117,14 @@ public class DBHelper {
     }
     
     public boolean addNewAnggota(String kelompok, String name, String umur, String role){
+        //Cek apakah sudah ada ketua jika memasukkan role ketua
         if(isAnyKetua(kelompok) && role.equals("1")){
             return false;
         }
         boolean value = false;
         
         String id = generateIdAnggota(kelompok);
-        query = "INSERT into anggota SET anggota_id = '" + id + "', kelompok_id = " + kelompok + ", nama = '" + name + "', umur = " + umur + ", role = '" + role + "'";
+        query = "INSERT into member SET member_id = '" + id + "', kelompok_id = " + kelompok + ", nama = '" + name + "', umur = " + umur + ", role = '" + role + "'";
         try {
             stmt = conn.createStatement();
             if (stmt.executeUpdate(query) > 0) {
@@ -138,12 +139,13 @@ public class DBHelper {
     }
     
     public boolean updateAnggota(String kelompok, String id, String nama, String umur, String role) {
+        //Cek apakah sudah ada ketua jika memasukkan role ketua
         if(isAnyKetua(kelompok) && role.equals("1")){
             return false;
         }
         boolean value = false;
         
-        query = "UPDATE anggota SET nama = \"" + nama + "\", umur = " + umur + ", role = '" + role + "' WHERE anggota_id =\"" + id + "\"";
+        query = "UPDATE member SET nama = \"" + nama + "\", umur = " + umur + ", role = '" + role + "' WHERE member_id =\"" + id + "\"";
         try {
             stmt = conn.createStatement();
             if (stmt.executeUpdate(query) > 0) {
@@ -158,7 +160,7 @@ public class DBHelper {
 
     public boolean deleteAnggota(String id) {
         boolean value = false;
-        query = "DELETE FROM anggota WHERE anggota_id =\"" + id + "\"";
+        query = "DELETE FROM member WHERE member_id =\"" + id + "\"";
         try {
             stmt = conn.createStatement();
             if (stmt.executeUpdate(query) > 0) {
@@ -173,7 +175,7 @@ public class DBHelper {
     
     public boolean isAnyKetua(String id) {
         boolean value = false;
-        query = "SELECT * FROM anggota WHERE kelompok_id = " + id + " AND role = '1'";
+        query = "SELECT * FROM member WHERE kelompok_id = " + id + " AND role = '1'";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);

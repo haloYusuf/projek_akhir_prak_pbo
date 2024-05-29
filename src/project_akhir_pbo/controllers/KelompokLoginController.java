@@ -6,17 +6,17 @@ package project_akhir_pbo.controllers;
 
 import javax.swing.JOptionPane;
 import project_akhir_pbo.helper.DBHelper;
-import project_akhir_pbo.views.PesertaLoginView;
+import project_akhir_pbo.views.KelompokLoginView;
 
 /**
  *
  * @author Hp
  */
-public class PesertaLoginController {
+public class KelompokLoginController {
     
-    PesertaLoginView v;
-    public PesertaLoginController(){
-        v = new PesertaLoginView(this);
+    KelompokLoginView v;
+    public KelompokLoginController(){
+        v = new KelompokLoginView(this);
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }
@@ -36,7 +36,7 @@ public class PesertaLoginController {
         else {
             if (helper.checkPesertaLogin(name, pass)) {
                 v.dispose();
-                new PesertaMainController();
+                new KelompokMainController();
             } else {
                 JOptionPane.showMessageDialog(v, "Login gagal, username atau password salah", "Login Error",
                         JOptionPane.ERROR_MESSAGE);

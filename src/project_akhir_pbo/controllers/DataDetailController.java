@@ -4,17 +4,17 @@
  */
 package project_akhir_pbo.controllers;
 
-import project_akhir_pbo.views.KelompokDetailView;
+import project_akhir_pbo.views.DataDetailView;
 
 /**
  *
  * @author Hp
  */
-public class KelompokDetailController {
+public class DataDetailController {
     
-    KelompokDetailView v;
-    public KelompokDetailController(){
-        v = new KelompokDetailView(this);
+    DataDetailView v;
+    public DataDetailController(){
+        v = new DataDetailView(this);
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }

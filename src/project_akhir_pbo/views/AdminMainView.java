@@ -4,7 +4,6 @@
  */
 package project_akhir_pbo.views;
 
-import javax.swing.JFrame;
 import project_akhir_pbo.controllers.AdminMainController;
 
 /**
@@ -158,11 +157,6 @@ public class AdminMainView extends javax.swing.JFrame {
                 logoutButtonMouseClicked(evt);
             }
         });
-        logoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -277,11 +271,8 @@ public class AdminMainView extends javax.swing.JFrame {
 
     private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
         // TODO add your handling code here:
+        c.logOut();
     }//GEN-LAST:event_logoutButtonMouseClicked
-
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_logoutButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accButton;

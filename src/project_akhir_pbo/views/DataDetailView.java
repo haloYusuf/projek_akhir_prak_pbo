@@ -5,19 +5,19 @@
 package project_akhir_pbo.views;
 
 import javax.swing.JFrame;
-import project_akhir_pbo.controllers.KelompokDetailController;
+import project_akhir_pbo.controllers.DataDetailController;
 
 /**
  *
  * @author Salma Hanifa
  */
-public class KelompokDetailView extends javax.swing.JFrame {
+public class DataDetailView extends javax.swing.JFrame {
 
     /**
-     * Creates new form KelompokDetailView
+     * Creates new form DataDetailView
      */
-    KelompokDetailController c;
-    public KelompokDetailView(KelompokDetailController c) {
+    DataDetailController c;
+    public DataDetailView(DataDetailController c) {
         initComponents();
         this.c = c;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

@@ -41,25 +41,37 @@ public class AdminLoginView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         jLabel1.setText("Login Admin");
 
+        namaField.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         namaField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 namaFieldActionPerformed(evt);
             }
         });
 
-        loginAdminButton.setBackground(new java.awt.Color(204, 204, 204));
+        loginAdminButton.setBackground(new java.awt.Color(180, 226, 226));
+        loginAdminButton.setFont(new java.awt.Font("Tw Cen MT", 1, 14)); // NOI18N
         loginAdminButton.setText("Login");
         loginAdminButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 loginAdminButtonMouseClicked(evt);
             }
         });
+        loginAdminButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginAdminButtonActionPerformed(evt);
+            }
+        });
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel2.setText("Username Admin");
 
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
         jLabel3.setText("Password Admin");
+
+        passField.setFont(new java.awt.Font("Tw Cen MT", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -68,26 +80,26 @@ public class AdminLoginView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(134, 134, 134)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel2)
-                            .addComponent(namaField, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
+                            .addComponent(namaField)
                             .addComponent(jLabel3)
-                            .addComponent(passField)))
+                            .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, 291, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addComponent(jLabel1))
+                        .addGap(207, 207, 207)
+                        .addComponent(loginAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(loginAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                        .addGap(210, 210, 210)
+                        .addComponent(jLabel1)))
+                .addContainerGap(149, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(37, 37, 37)
                 .addComponent(jLabel1)
-                .addGap(27, 27, 27)
+                .addGap(41, 41, 41)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(namaField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -95,9 +107,9 @@ public class AdminLoginView extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(passField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                .addGap(72, 72, 72)
                 .addComponent(loginAdminButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         pack();
@@ -125,6 +137,10 @@ public class AdminLoginView extends javax.swing.JFrame {
     private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_namaFieldActionPerformed
+
+    private void loginAdminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginAdminButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginAdminButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

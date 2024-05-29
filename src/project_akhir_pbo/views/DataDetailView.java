@@ -44,13 +44,17 @@ public class DataDetailView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel1.setText("Nama Tim          :");
 
+        jLabel2.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         jLabel2.setText("Tanggal Dibuat  :");
 
-        jLabel3.setText("Anggota             :");
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        jLabel3.setText("Anggota            :");
 
-        kembaliButton.setBackground(new java.awt.Color(204, 204, 204));
+        kembaliButton.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        kembaliButton.setForeground(new java.awt.Color(255, 0, 51));
         kembaliButton.setText("Kembali");
         kembaliButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -58,15 +62,20 @@ public class DataDetailView extends javax.swing.JFrame {
             }
         });
 
+        namaTimLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         namaTimLabel.setText("namaTimnya");
 
+        tglLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         tglLabel.setText("22-22-22");
 
+        anggotaLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         anggotaLabel.setText("saya saya saya");
         anggotaLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel4.setText("Ketua                   :");
+        jLabel4.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
+        jLabel4.setText("Ketua                :");
 
+        ketuaLabel.setFont(new java.awt.Font("Tw Cen MT", 0, 14)); // NOI18N
         ketuaLabel.setText("saya");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -90,7 +99,7 @@ public class DataDetailView extends javax.swing.JFrame {
                             .addComponent(namaTimLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tglLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ketuaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(anggotaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))))
+                            .addComponent(anggotaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 214, Short.MAX_VALUE))))
                 .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(

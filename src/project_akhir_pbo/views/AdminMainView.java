@@ -4,6 +4,7 @@
  */
 package project_akhir_pbo.views;
 
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import project_akhir_pbo.controllers.AdminMainController;
 
@@ -210,6 +211,8 @@ public class AdminMainView extends javax.swing.JFrame {
         int row = dataTableRequest.getSelectedRow();
         if (row == -1) {
             //Tampilan error tidak adad data yang dipilih
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             String id = dataTableRequest.getModel().getValueAt(row, 0).toString();
             c.accKelompok(id);
@@ -221,6 +224,8 @@ public class AdminMainView extends javax.swing.JFrame {
         int row = dataTableRequest.getSelectedRow();
         if (row == -1) {
             //Tampilan error tidak adad data yang dipilih
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             String id = dataTableRequest.getModel().getValueAt(row, 0).toString();
             c.getDetail(id);
@@ -232,6 +237,8 @@ public class AdminMainView extends javax.swing.JFrame {
         int row = dataTableRequest.getSelectedRow();
         if (row == -1) {
             //Tampilan error tidak adad data yang dipilih
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             String id = dataTableRequest.getModel().getValueAt(row, 0).toString();
             c.tolakKelompok(id);
@@ -243,6 +250,8 @@ public class AdminMainView extends javax.swing.JFrame {
         int row = dataTableAcc.getSelectedRow();
         if (row == -1) {
             //Tampilan error tidak adad data yang dipilih
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             String id = dataTableAcc.getModel().getValueAt(row, 0).toString();
             c.dissKelompok(id);
@@ -254,6 +263,8 @@ public class AdminMainView extends javax.swing.JFrame {
         int row = dataTableAcc.getSelectedRow();
         if (row == -1) {
             //Tampilan error tidak adad data yang dipilih
+            JOptionPane.showMessageDialog(this, "Tidak ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             String id = dataTableAcc.getModel().getValueAt(row, 0).toString();
             c.getDetail(id);

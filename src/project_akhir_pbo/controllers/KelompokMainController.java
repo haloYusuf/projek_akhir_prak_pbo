@@ -36,6 +36,7 @@ public class KelompokMainController {
         DBHelper helper = new DBHelper();
         if(helper.isAnyKetua(TempData.kelompokID) && role.equals("1")){
             //Error sudah ada ketua pada kelompok, ketua hanya boleh 1 orang
+            JOptionPane.showMessageDialog(v, "Sudah terdapat ketua pada kelompok", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             if (helper.addNewMember(TempData.kelompokID, nama, umur, role)) {
                 JOptionPane.showMessageDialog(v, "Data berhasil dibuat", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -50,12 +51,13 @@ public class KelompokMainController {
         DBHelper helper = new DBHelper();
         if(helper.isAnyKetua(TempData.kelompokID) && role.equals("1")){
             //Error sudah ada ketua pada kelompok, ketua hanya boleh 1 orang
+            JOptionPane.showMessageDialog(v, "Sudah terdapat ketua pada kelompok", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             if(helper.updateMember(TempData.kelompokID, id, nama, umur, role)){
                 JOptionPane.showMessageDialog(v, "Data berhasil diupdate", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refreshTable();
             }else{
-                JOptionPane.showMessageDialog(v, "gagal mengupdate data", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(v, "Gagal mengupdate data", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
@@ -66,7 +68,7 @@ public class KelompokMainController {
             JOptionPane.showMessageDialog(v, "Data berhasil dihapus", "Success", JOptionPane.INFORMATION_MESSAGE);
             refreshTable();
         }else{
-            JOptionPane.showMessageDialog(v, "gagal menghapus data", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(v, "Gagal menghapus data", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     

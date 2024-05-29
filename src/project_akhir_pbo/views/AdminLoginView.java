@@ -5,6 +5,7 @@
 package views;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import project_akhir_pbo.controllers.AdminLoginController;
 
 /**
@@ -106,10 +107,16 @@ public class AdminLoginView extends javax.swing.JFrame {
         // TODO add your handling code here
         if(namaField.getText().isEmpty() && passField.getText().isEmpty()){
             //Kasih error Username dan password tidak boleh kosong
+            JOptionPane.showMessageDialog(this, "Username dan password tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else if(namaField.getText().isEmpty()){
             //Kasih error Username kosong
+            JOptionPane.showMessageDialog(this, "Username tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else if(passField.getText().isEmpty()){
             //Kasih error Password tidak boleh kosong
+            JOptionPane.showMessageDialog(this, "Password tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
         }else{
             c.loginProccess(namaField.getText(), passField.getText()); 
         }

@@ -5,6 +5,7 @@
 package project_akhir_pbo.controllers;
 
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import project_akhir_pbo.helper.DBHelper;
 import project_akhir_pbo.models.KelompokModel;
@@ -42,9 +43,11 @@ public class AdminMainController {
                 refreshTable();
             }else{
                 //Tampilan error gagal meng acc kelompok
+                JOptionPane.showMessageDialog(v, "Terdapat kesalahan dalam ACC kelompok", "Try Again", JOptionPane.ERROR_MESSAGE);
             }
         }else{
             //Tampilan error kelompok belum memiliki ketua
+            JOptionPane.showMessageDialog(v, "Kelompok wajib memiliki ketua, Pilih ketua terlebih dahulu", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -54,6 +57,7 @@ public class AdminMainController {
             refreshTable();
         }else{
             //Tampilan error gagal menghapus kelompok
+            JOptionPane.showMessageDialog(v, "Kelompok gagal dihapus", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -63,6 +67,7 @@ public class AdminMainController {
             refreshTable();
         }else{
             //Tampilan gagal mendiskualifikasi kelompok
+            JOptionPane.showMessageDialog(v, "Terdapat kesalahan dalam diskualifikasi kelompok", "Try Again", JOptionPane.ERROR_MESSAGE);
         }
     }
     

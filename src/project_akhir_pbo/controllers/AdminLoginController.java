@@ -30,5 +30,4 @@ public class AdminLoginController {
             JOptionPane.showMessageDialog(v, "Login gagal, username atau password salah", "Login Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
 }

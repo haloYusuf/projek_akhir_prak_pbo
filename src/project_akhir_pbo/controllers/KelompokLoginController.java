@@ -27,7 +27,7 @@ public class KelompokLoginController {
             v.dispose();
             new KelompokMainController();
         }else{
-            JOptionPane.showMessageDialog(v, "Login gagal, username atau password salah", "Login Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(v, "Login gagal, Nama kelompok atau password salah", "Login Error", JOptionPane.ERROR_MESSAGE);
         }
 
     }

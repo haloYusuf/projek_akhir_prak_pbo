@@ -359,6 +359,9 @@ public class KelompokMainView extends javax.swing.JFrame {
 
     private void cetakButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cetakButtonMouseClicked
         // TODO add your handling code here:
+        if(TempData.kelompokStatus.equals("1")){
+            c.generateFile();
+        }
     }//GEN-LAST:event_cetakButtonMouseClicked
 
     private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed

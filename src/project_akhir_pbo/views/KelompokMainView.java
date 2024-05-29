@@ -252,10 +252,16 @@ public class KelompokMainView extends javax.swing.JFrame {
         if(TempData.kelompokStatus.equals("0")){
             if(namaField.getText().isEmpty() && umurField.getText().isEmpty()){
                 //Error harus masukin nama & umur dulu
+                JOptionPane.showMessageDialog(this, "Nama dan umur tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
             }else if(namaField.getText().isEmpty()){
                 //Error harus masukin nama dulu
+                JOptionPane.showMessageDialog(this, "Nama tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
             }else if(umurField.getText().isEmpty()){
                 //Error harus masukin umur dulu
+                JOptionPane.showMessageDialog(this, "Umur tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
             }else{
                 if(ketuaRadioButton.isSelected()){
                     c.tambahData(namaField.getText(), umurField.getText(), "1");
@@ -280,13 +286,21 @@ public class KelompokMainView extends javax.swing.JFrame {
             int row = dataTable.getSelectedRow();
             if(row == -1){
                 //Tampilin error belom pencet tablenya
+                JOptionPane.showMessageDialog(this, "Belum ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
             }else{
                 if(namaField.getText().isEmpty() && umurField.getText().isEmpty()){
                     //Error harus masukin nama & umur dulu
+                    JOptionPane.showMessageDialog(this, "Nama dan umur tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
                 }else if(namaField.getText().isEmpty()){
                     //Error harus masukin nama dulu
+                    JOptionPane.showMessageDialog(this, "Nama tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
                 }else if(umurField.getText().isEmpty()){
                     //Error harus masukin umur dulu
+                    JOptionPane.showMessageDialog(this, "Umur tidak boleh kosong", "Error",
+                    JOptionPane.ERROR_MESSAGE);
                 }else{
                     String id = dataTable.getModel().getValueAt(row, 0).toString();
                     if(ketuaRadioButton.isSelected()){
@@ -314,6 +328,8 @@ public class KelompokMainView extends javax.swing.JFrame {
             String id = dataTable.getModel().getValueAt(row, 0).toString();
             if(row == -1){
                 //Tampilin error belom pencet tablenya
+                JOptionPane.showMessageDialog(this, "Belum ada data yang dipilih", "Error",
+                    JOptionPane.ERROR_MESSAGE);
             }else{
                 c.deleteData(id);
                 posisiButton.clearSelection();

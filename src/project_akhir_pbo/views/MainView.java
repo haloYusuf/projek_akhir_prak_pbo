@@ -65,7 +65,7 @@ public class MainView extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\Salma Hanifa\\Downloads\\7428.png_860__1_-removebg-preview (3).png")); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon("D:\\Document\\Kuliah\\Informatika UPN V YK\\Semester 4\\Pemrograman Berorientasi Object\\Praktikum\\project_akhir_pbo\\img\\logoAuth.png")); // NOI18N
         jLabel3.setText("jLabel3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

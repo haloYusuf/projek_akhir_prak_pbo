@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2024 at 04:57 PM
+-- Generation Time: May 30, 2024 at 12:40 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -54,13 +54,6 @@ CREATE TABLE `kelompok` (
   `status` enum('0','1') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `kelompok`
---
-
-INSERT INTO `kelompok` (`kelompok_id`, `nama`, `pass`, `tgl_dibuat`, `status`) VALUES
-(1, 'Tim Ngikut', '12345', '2024-05-29', '1');
-
 -- --------------------------------------------------------
 
 --
@@ -74,15 +67,6 @@ CREATE TABLE `member` (
   `umur` int(11) NOT NULL,
   `role` enum('0','1') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `member`
---
-
-INSERT INTO `member` (`member_id`, `kelompok_id`, `nama`, `umur`, `role`) VALUES
-('1_1', 1, 'Afif', 20, '1'),
-('1_3', 1, 'Arya', 19, '0'),
-('1_4', 1, 'Yusuf', 20, '0');
 
 --
 -- Indexes for dumped tables
@@ -122,7 +106,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `kelompok`
 --
 ALTER TABLE `kelompok`
-  MODIFY `kelompok_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `kelompok_id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

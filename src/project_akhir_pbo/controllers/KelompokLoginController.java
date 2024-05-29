@@ -34,7 +34,7 @@ public class KelompokLoginController {
 
     public void registerProcess(String name, String pass) {
         DBHelper helper = new DBHelper();
-        if(helper.addNewPeserta(name, pass)){
+        if(helper.addNewKelompok(name, pass)){
             JOptionPane.showMessageDialog(v, "Akun berhasil ditambahkan, Klik login untuk melanjutkan", "Success", JOptionPane.INFORMATION_MESSAGE);
         }else{
             JOptionPane.showMessageDialog(v, "Whoopsie nama kelompok sudah terdaftar, Klik login untuk melanjutkan", "Error", JOptionPane.ERROR_MESSAGE);

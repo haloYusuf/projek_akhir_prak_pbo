@@ -54,7 +54,7 @@ public class DBHelper {
         return value;
     }
     
-    public boolean addNewPeserta(String name, String pass){
+    public boolean addNewKelompok(String name, String pass){
         boolean value = false;
         
         query = "INSERT INTO kelompok SET nama ='" + name + "', pass = '" + pass + "', tgl_dibuat = sysdate(), status = '0'";
@@ -166,6 +166,22 @@ public class DBHelper {
     public boolean isAnyKetua(String id) {
         boolean value = false;
         query = "SELECT * FROM member WHERE kelompok_id = " + id + " AND role = '1'";
+        try {
+            stmt = conn.createStatement();
+            rs = stmt.executeQuery(query);
+            if(rs.next()){
+                value = true;
+            }
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
+    
+    public boolean checkIdKetua(String id) {
+        boolean value = false;
+        query = "SELECT * FROM member WHERE member_id = '" + id + "' AND role = '1'";
         try {
             stmt = conn.createStatement();
             rs = stmt.executeQuery(query);

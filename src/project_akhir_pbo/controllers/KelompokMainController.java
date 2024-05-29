@@ -55,7 +55,7 @@ public class KelompokMainController {
     
     public void updateData(String id, String nama, String umur, String role) {
         DBHelper helper = new DBHelper();
-        if(helper.isAnyKetua(TempData.kelompokID) && role.equals("1")){
+        if(helper.isAnyKetua(TempData.kelompokID) && role.equals("1") && !helper.checkIdKetua(id)){
             //Error sudah ada ketua pada kelompok, ketua hanya boleh 1 orang
             JOptionPane.showMessageDialog(v, "Sudah terdapat ketua pada kelompok", "Error", JOptionPane.ERROR_MESSAGE);
         }else{

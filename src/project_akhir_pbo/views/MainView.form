@@ -99,7 +99,7 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\Salma Hanifa\Downloads\7428.png_860__1_-removebg-preview (3).png"/>
+          <Image iconType="2" name="D:\Document\Kuliah\Informatika UPN V YK\Semester 4\Pemrograman Berorientasi Object\Praktikum\project_akhir_pbo\img\logoAuth.png"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel3"/>
       </Properties>

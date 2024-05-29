@@ -4,6 +4,7 @@
  */
 package project_akhir_pbo.views;
 
+import javax.swing.JTable;
 import project_akhir_pbo.controllers.AdminMainController;
 
 /**
@@ -32,10 +33,10 @@ public class AdminMainView extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        dataTableRequst = new javax.swing.JTable();
+        dataTableRequest = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        dataTableDone = new javax.swing.JTable();
+        dataTableAcc = new javax.swing.JTable();
         accButton = new javax.swing.JButton();
         detailButton = new javax.swing.JButton();
         tolakButton = new javax.swing.JButton();
@@ -47,7 +48,7 @@ public class AdminMainView extends javax.swing.JFrame {
 
         jLabel1.setText("Data Kelompok Belum Dikonfirmasi");
 
-        dataTableRequst.setModel(new javax.swing.table.DefaultTableModel(
+        dataTableRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -58,16 +59,16 @@ public class AdminMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        dataTableRequst.addMouseListener(new java.awt.event.MouseAdapter() {
+        dataTableRequest.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dataTableRequstMouseClicked(evt);
+                dataTableRequestMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(dataTableRequst);
+        jScrollPane1.setViewportView(dataTableRequest);
 
         jLabel2.setText("Data Kelompok Sudah Dikonfirmasi");
 
-        dataTableDone.setModel(new javax.swing.table.DefaultTableModel(
+        dataTableAcc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,23 +79,18 @@ public class AdminMainView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        dataTableDone.addMouseListener(new java.awt.event.MouseAdapter() {
+        dataTableAcc.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                dataTableDoneMouseClicked(evt);
+                dataTableAccMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(dataTableDone);
+        jScrollPane2.setViewportView(dataTableAcc);
 
         accButton.setBackground(new java.awt.Color(204, 204, 204));
         accButton.setText("Terima");
         accButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 accButtonMouseClicked(evt);
-            }
-        });
-        accButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                accButtonActionPerformed(evt);
             }
         });
 
@@ -105,22 +101,12 @@ public class AdminMainView extends javax.swing.JFrame {
                 detailButtonMouseClicked(evt);
             }
         });
-        detailButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailButtonActionPerformed(evt);
-            }
-        });
 
         tolakButton.setBackground(new java.awt.Color(204, 204, 204));
         tolakButton.setText("Tolak");
         tolakButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tolakButtonMouseClicked(evt);
-            }
-        });
-        tolakButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tolakButtonActionPerformed(evt);
             }
         });
 
@@ -131,22 +117,12 @@ public class AdminMainView extends javax.swing.JFrame {
                 dissButtonMouseClicked(evt);
             }
         });
-        dissButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dissButtonActionPerformed(evt);
-            }
-        });
 
         detailDoneButton.setBackground(new java.awt.Color(204, 204, 204));
         detailDoneButton.setText("Detail");
         detailDoneButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 detailDoneButtonMouseClicked(evt);
-            }
-        });
-        detailDoneButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                detailDoneButtonActionPerformed(evt);
             }
         });
 
@@ -221,63 +197,86 @@ public class AdminMainView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void dataTableRequstMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableRequstMouseClicked
+    private void dataTableRequestMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableRequestMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_dataTableRequstMouseClicked
+    }//GEN-LAST:event_dataTableRequestMouseClicked
 
-    private void dataTableDoneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableDoneMouseClicked
+    private void dataTableAccMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableAccMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_dataTableDoneMouseClicked
-
-    private void accButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_accButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_accButtonActionPerformed
+    }//GEN-LAST:event_dataTableAccMouseClicked
 
     private void accButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_accButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTableRequest.getSelectedRow();
+        if (row == -1) {
+            //Tampilan error tidak adad data yang dipilih
+        }else{
+            String id = dataTableRequest.getModel().getValueAt(row, 0).toString();
+            c.accKelompok(id);
+        }
     }//GEN-LAST:event_accButtonMouseClicked
 
     private void detailButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTableRequest.getSelectedRow();
+        if (row == -1) {
+            //Tampilan error tidak adad data yang dipilih
+        }else{
+            String id = dataTableRequest.getModel().getValueAt(row, 0).toString();
+            c.getDetail(id);
+        }
     }//GEN-LAST:event_detailButtonMouseClicked
-
-    private void detailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_detailButtonActionPerformed
 
     private void tolakButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tolakButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTableRequest.getSelectedRow();
+        if (row == -1) {
+            //Tampilan error tidak adad data yang dipilih
+        }else{
+            String id = dataTableRequest.getModel().getValueAt(row, 0).toString();
+            c.tolakKelompok(id);
+        }
     }//GEN-LAST:event_tolakButtonMouseClicked
-
-    private void tolakButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tolakButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tolakButtonActionPerformed
 
     private void dissButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dissButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTableAcc.getSelectedRow();
+        if (row == -1) {
+            //Tampilan error tidak adad data yang dipilih
+        }else{
+            String id = dataTableAcc.getModel().getValueAt(row, 0).toString();
+            c.dissKelompok(id);
+        }
     }//GEN-LAST:event_dissButtonMouseClicked
-
-    private void dissButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dissButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dissButtonActionPerformed
 
     private void detailDoneButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_detailDoneButtonMouseClicked
         // TODO add your handling code here:
+        int row = dataTableAcc.getSelectedRow();
+        if (row == -1) {
+            //Tampilan error tidak adad data yang dipilih
+        }else{
+            String id = dataTableAcc.getModel().getValueAt(row, 0).toString();
+            c.getDetail(id);
+        }
     }//GEN-LAST:event_detailDoneButtonMouseClicked
-
-    private void detailDoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detailDoneButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_detailDoneButtonActionPerformed
 
     private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
         // TODO add your handling code here:
         c.logOut();
     }//GEN-LAST:event_logoutButtonMouseClicked
 
+    public JTable getDataTableAcc() {
+        return dataTableAcc;
+    }
+
+    public JTable getDataTableRequest() {
+        return dataTableRequest;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton accButton;
-    private javax.swing.JTable dataTableDone;
-    private javax.swing.JTable dataTableRequst;
+    private javax.swing.JTable dataTableAcc;
+    private javax.swing.JTable dataTableRequest;
     private javax.swing.JButton detailButton;
     private javax.swing.JButton detailDoneButton;
     private javax.swing.JButton dissButton;

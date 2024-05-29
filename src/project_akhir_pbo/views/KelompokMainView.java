@@ -25,6 +25,15 @@ public class KelompokMainView extends javax.swing.JFrame {
         this.c = c;
         if (TempData.kelompokStatus.equals("0")) {
             cetakButton.setEnabled(false);
+        }else if(TempData.kelompokStatus.equals("1")){
+            ketuaRadioButton.setEnabled(false);
+            anggotaRadioButton.setEnabled(false);
+            namaField.setEditable(false);
+            umurField.setEditable(false);
+            clearButton.setEnabled(false);
+            tambahButton.setEnabled(false);
+            ubahButton.setEnabled(false);
+            hapusButton.setEnabled(false);
         }
     }
 
@@ -222,13 +231,15 @@ public class KelompokMainView extends javax.swing.JFrame {
 
     private void dataTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dataTableMouseClicked
         // TODO add your handling code here:
-        int row = dataTable.getSelectedRow();
-        namaField.setText(dataTable.getModel().getValueAt(row, 1).toString());
-        umurField.setText(dataTable.getModel().getValueAt(row, 2).toString());
-        if(dataTable.getModel().getValueAt(row, 3).toString().equals("Ketua")){
-            ketuaRadioButton.setSelected(true);
-        }else{
-            anggotaRadioButton.setSelected(true);
+        if(TempData.kelompokStatus.equals("0")){
+            int row = dataTable.getSelectedRow();
+            namaField.setText(dataTable.getModel().getValueAt(row, 1).toString());
+            umurField.setText(dataTable.getModel().getValueAt(row, 2).toString());
+            if(dataTable.getModel().getValueAt(row, 3).toString().equals("Ketua")){
+                ketuaRadioButton.setSelected(true);
+            }else{
+                anggotaRadioButton.setSelected(true);
+            }
         }
     }//GEN-LAST:event_dataTableMouseClicked
 
@@ -238,47 +249,78 @@ public class KelompokMainView extends javax.swing.JFrame {
 
     private void tambahButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tambahButtonMouseClicked
         // TODO add your handling code here:
-        if(ketuaRadioButton.isSelected()){
-            c.tambahData(namaField.getText(), umurField.getText(), "1");
-            posisiButton.clearSelection();
-            namaField.setText("");
-            umurField.setText("");
-        }else if(anggotaRadioButton.isSelected()){
-            c.tambahData(namaField.getText(), umurField.getText(), "0");
-            posisiButton.clearSelection();
-            namaField.setText("");
-            umurField.setText("");
-        }else{
-            JOptionPane.showMessageDialog(this, "Pilih role terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+        if(TempData.kelompokStatus.equals("0")){
+            if(namaField.getText().isEmpty() && umurField.getText().isEmpty()){
+                //Error harus masukin nama & umur dulu
+            }else if(namaField.getText().isEmpty()){
+                //Error harus masukin nama dulu
+            }else if(umurField.getText().isEmpty()){
+                //Error harus masukin umur dulu
+            }else{
+                if(ketuaRadioButton.isSelected()){
+                    c.tambahData(namaField.getText(), umurField.getText(), "1");
+                    posisiButton.clearSelection();
+                    namaField.setText("");
+                    umurField.setText("");
+                }else if(anggotaRadioButton.isSelected()){
+                    c.tambahData(namaField.getText(), umurField.getText(), "0");
+                    posisiButton.clearSelection();
+                    namaField.setText("");
+                    umurField.setText("");
+                }else{
+                    JOptionPane.showMessageDialog(this, "Pilih role terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
     }//GEN-LAST:event_tambahButtonMouseClicked
 
     private void ubahButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ubahButtonMouseClicked
         // TODO add your handling code here:
-        int row = dataTable.getSelectedRow();
-        if(ketuaRadioButton.isSelected()){
-            c.updateData(row, namaField.getText(), umurField.getText(), "1");
-            posisiButton.clearSelection();
-            namaField.setText("");
-            umurField.setText("");
-        }else if(anggotaRadioButton.isSelected()){
-            c.updateData(row, namaField.getText(), umurField.getText(), "0");
-            posisiButton.clearSelection();
-            namaField.setText("");
-            umurField.setText("");
-        }else{
-            JOptionPane.showMessageDialog(this, "Pilih role terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+        if(TempData.kelompokStatus.equals("0")){
+            int row = dataTable.getSelectedRow();
+            if(row == -1){
+                //Tampilin error belom pencet tablenya
+            }else{
+                if(namaField.getText().isEmpty() && umurField.getText().isEmpty()){
+                    //Error harus masukin nama & umur dulu
+                }else if(namaField.getText().isEmpty()){
+                    //Error harus masukin nama dulu
+                }else if(umurField.getText().isEmpty()){
+                    //Error harus masukin umur dulu
+                }else{
+                    String id = dataTable.getModel().getValueAt(row, 0).toString();
+                    if(ketuaRadioButton.isSelected()){
+                        c.updateData(id, namaField.getText(), umurField.getText(), "1");
+                        posisiButton.clearSelection();
+                        namaField.setText("");
+                        umurField.setText("");
+                    }else if(anggotaRadioButton.isSelected()){
+                        c.updateData(id, namaField.getText(), umurField.getText(), "0");
+                        posisiButton.clearSelection();
+                        namaField.setText("");
+                        umurField.setText("");
+                    }else{
+                        JOptionPane.showMessageDialog(this, "Pilih role terlebih dahulu!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            }
         }
-
     }//GEN-LAST:event_ubahButtonMouseClicked
 
     private void hapusButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hapusButtonMouseClicked
         // TODO add your handling code here:
-        int row = dataTable.getSelectedRow();
-        c.deleteData(row);
-        posisiButton.clearSelection();
-        namaField.setText("");
-        umurField.setText("");
+        if(TempData.kelompokStatus.equals("0")){
+            int row = dataTable.getSelectedRow();
+            String id = dataTable.getModel().getValueAt(row, 0).toString();
+            if(row == -1){
+                //Tampilin error belom pencet tablenya
+            }else{
+                c.deleteData(id);
+                posisiButton.clearSelection();
+                namaField.setText("");
+                umurField.setText("");
+            }
+        }
     }//GEN-LAST:event_hapusButtonMouseClicked
 
     private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
@@ -288,9 +330,11 @@ public class KelompokMainView extends javax.swing.JFrame {
 
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
         // TODO add your handling code here:
-        posisiButton.clearSelection();
-        namaField.setText("");
-        umurField.setText("");
+        if(TempData.kelompokStatus.equals("0")){
+            posisiButton.clearSelection();
+            namaField.setText("");
+            umurField.setText(""); 
+        }
     }//GEN-LAST:event_clearButtonMouseClicked
 
     private void umurFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_umurFieldActionPerformed

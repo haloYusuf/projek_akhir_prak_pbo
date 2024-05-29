@@ -20,7 +20,6 @@ public class KelompokLoginView extends javax.swing.JFrame {
     public KelompokLoginView(KelompokLoginController c) {
         initComponents();
         this.c = c;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -43,7 +42,7 @@ public class KelompokLoginView extends javax.swing.JFrame {
 
         jTextField1.setText("jTextField1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("LOGIN KELOMPOK");
 
@@ -124,12 +123,28 @@ public class KelompokLoginView extends javax.swing.JFrame {
 
     private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
         // TODO add your handling code here:
-        c.loginProcess(namaField.getText(), passField.getText());
+        if(namaField.getText().isEmpty() && passField.getText().isEmpty()){
+            //Kasih error Username dan password tidak boleh kosong
+        }else if(namaField.getText().isEmpty()){
+            //Kasih error Username kosong
+        }else if(passField.getText().isEmpty()){
+            //Kasih error Password tidak boleh kosong
+        }else{
+            c.loginProcess(namaField.getText(), passField.getText());  
+        }
     }//GEN-LAST:event_loginButtonMouseClicked
 
     private void regisButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_regisButtonMouseClicked
         // TODO add your handling code here:
-        c.registerProcess(namaField.getText(), passField.getText());
+        if(namaField.getText().isEmpty() && passField.getText().isEmpty()){
+            //Kasih error Username dan password tidak boleh kosong
+        }else if(namaField.getText().isEmpty()){
+            //Kasih error Username kosong
+        }else if(passField.getText().isEmpty()){
+            //Kasih error Password tidak boleh kosong
+        }else{
+            c.registerProcess(namaField.getText(), passField.getText()); 
+        }
     }//GEN-LAST:event_regisButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

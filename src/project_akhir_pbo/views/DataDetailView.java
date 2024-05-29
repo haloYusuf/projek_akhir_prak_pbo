@@ -5,6 +5,7 @@
 package project_akhir_pbo.views;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import project_akhir_pbo.controllers.DataDetailController;
 
 /**
@@ -20,7 +21,6 @@ public class DataDetailView extends javax.swing.JFrame {
     public DataDetailView(DataDetailController c) {
         initComponents();
         this.c = c;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -36,14 +36,19 @@ public class DataDetailView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         kembaliButton = new javax.swing.JButton();
+        namaTimLabel = new javax.swing.JLabel();
+        tglLabel = new javax.swing.JLabel();
+        anggotaLabel = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        ketuaLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
-        jLabel1.setText("Nama Tim");
+        jLabel1.setText("Nama Tim          :");
 
-        jLabel2.setText("Tanggal Dibuat :");
+        jLabel2.setText("Tanggal Dibuat  :");
 
-        jLabel3.setText("Anggota :");
+        jLabel3.setText("Anggota             :");
 
         kembaliButton.setBackground(new java.awt.Color(204, 204, 204));
         kembaliButton.setText("Kembali");
@@ -52,11 +57,17 @@ public class DataDetailView extends javax.swing.JFrame {
                 kembaliButtonMouseClicked(evt);
             }
         });
-        kembaliButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                kembaliButtonActionPerformed(evt);
-            }
-        });
+
+        namaTimLabel.setText("namaTimnya");
+
+        tglLabel.setText("22-22-22");
+
+        anggotaLabel.setText("saya saya saya");
+        anggotaLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        jLabel4.setText("Ketua                   :");
+
+        ketuaLabel.setText("saya");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,45 +75,81 @@ public class DataDetailView extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
-                .addContainerGap(277, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(kembaliButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(kembaliButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(namaTimLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tglLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ketuaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(anggotaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE))))
                 .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(namaTimLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(tglLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(ketuaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(anggotaLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(kembaliButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
+                .addGap(36, 36, 36))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void kembaliButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kembaliButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_kembaliButtonActionPerformed
-
     private void kembaliButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_kembaliButtonMouseClicked
         // TODO add your handling code here:
+        c.goBack();
     }//GEN-LAST:event_kembaliButtonMouseClicked
+    public JLabel getAnggotaLabel() {
+        return anggotaLabel;
+    }
 
+    public JLabel getKetuaLabel() {
+        return ketuaLabel;
+    }
+
+    public JLabel getNamaTimLabel() {
+        return namaTimLabel;
+    }
+
+    public JLabel getTglLabel() {
+        return tglLabel;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel anggotaLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton kembaliButton;
+    private javax.swing.JLabel ketuaLabel;
+    private javax.swing.JLabel namaTimLabel;
+    private javax.swing.JLabel tglLabel;
     // End of variables declaration//GEN-END:variables
 }

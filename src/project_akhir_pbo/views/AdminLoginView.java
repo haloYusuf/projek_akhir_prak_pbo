@@ -20,7 +20,6 @@ public class AdminLoginView extends javax.swing.JFrame {
     public AdminLoginView(AdminLoginController c) {
         initComponents();
         this.c = c;
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -39,7 +38,7 @@ public class AdminLoginView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         passField = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Login Admin");
 
@@ -105,7 +104,15 @@ public class AdminLoginView extends javax.swing.JFrame {
 
     private void loginAdminButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginAdminButtonMouseClicked
         // TODO add your handling code here
-        c.loginProccess(namaField.getText(), passField.getText());
+        if(namaField.getText().isEmpty() && passField.getText().isEmpty()){
+            //Kasih error Username dan password tidak boleh kosong
+        }else if(namaField.getText().isEmpty()){
+            //Kasih error Username kosong
+        }else if(passField.getText().isEmpty()){
+            //Kasih error Password tidak boleh kosong
+        }else{
+            c.loginProccess(namaField.getText(), passField.getText()); 
+        }
     }//GEN-LAST:event_loginAdminButtonMouseClicked
 
     private void namaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaFieldActionPerformed

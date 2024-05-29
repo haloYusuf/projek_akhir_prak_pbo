@@ -22,65 +22,51 @@ public class KelompokMainController {
     private final DefaultTableModel model;
     
     public KelompokMainController(){
-        String[] header = {"Id", "Nama", "Umur", "Role"};//Set header table
-        model = new DefaultTableModel(header, 0);//Buat data model untuk table
-        refreshTable();//Manggil fungsi refresh table untuk nampilin data ke table
+        String[] header = {"Id", "Nama", "Umur", "Role"};
+        model = new DefaultTableModel(header, 0);
+        refreshTable();
         
         v = new KelompokMainView(this);
-        v.getDataTable().setModel(model);//Masukkin model ke tabel UI
+        v.getDataTable().setModel(model);
         v.setLocationRelativeTo(null);
         v.setVisible(true);
     }
     
     public void tambahData(String nama, String umur, String role){
-        if(nama.isEmpty() || umur.isEmpty()){
-            //Tambahin Error Handling
-            JOptionPane.showMessageDialog(v, "Data harus ada isi", "Error", JOptionPane.ERROR_MESSAGE);
-            System.out.println("Data harus ada isi");
+        DBHelper helper = new DBHelper();
+        if(helper.isAnyKetua(TempData.kelompokID) && role.equals("1")){
+            //Error sudah ada ketua pada kelompok, ketua hanya boleh 1 orang
         }else{
-            DBHelper helper = new DBHelper();
-            if(helper.addNewMember(TempData.kelompokID, nama, umur, role)){
-                System.out.println("Berhasil add data!");
+            if (helper.addNewMember(TempData.kelompokID, nama, umur, role)) {
+                JOptionPane.showMessageDialog(v, "Data berhasil dibuat", "Success", JOptionPane.INFORMATION_MESSAGE);
                 refreshTable();
             }else{
-                //Tambahin Error Handling
-                JOptionPane.showMessageDialog(v, "Gagal add data!", "Error", JOptionPane.ERROR_MESSAGE);
-                System.out.println("Gagal add data!");
+                JOptionPane.showMessageDialog(v, "Gagal menambah data!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
     
-    public void updateData(int row, String nama, String umur, String role) {
-        if (row != -1) {
-            String id = model.getValueAt(row, 0).toString(); //Ambil data id sesuai data tabel yang di klick
-            if (nama.isEmpty() || umur.isEmpty()){
-                JOptionPane.showMessageDialog(v, "Data harus ada isi", "Error", JOptionPane.ERROR_MESSAGE);
+    public void updateData(String id, String nama, String umur, String role) {
+        DBHelper helper = new DBHelper();
+        if(helper.isAnyKetua(TempData.kelompokID) && role.equals("1")){
+            //Error sudah ada ketua pada kelompok, ketua hanya boleh 1 orang
+        }else{
+            if(helper.updateMember(TempData.kelompokID, id, nama, umur, role)){
+                JOptionPane.showMessageDialog(v, "Data berhasil diupdate", "Success", JOptionPane.INFORMATION_MESSAGE);
+                refreshTable();
             }else{
-                DBHelper helper = new DBHelper();
-                if (helper.updateMember(TempData.kelompokID, id, nama, umur, role)) {
-                    JOptionPane.showMessageDialog(v, "berhasil diupdate", "Success", JOptionPane.INFORMATION_MESSAGE);
-                    refreshTable();
-                } else {
-                    JOptionPane.showMessageDialog(v, "gagal mengupdate data", "Error", JOptionPane.ERROR_MESSAGE);
-                }
+                JOptionPane.showMessageDialog(v, "gagal mengupdate data", "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } else {
-            JOptionPane.showMessageDialog(v, "tidak ada data yg dipilih", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
-    public void deleteData(int row) {
-        if (row != -1) {
-            String id = model.getValueAt(row, 0).toString(); //Ambil data id sesuai data tabel yang di klick
-            DBHelper helper = new DBHelper();
-            if (helper.deleteMember(id)) {
-                JOptionPane.showMessageDialog(v, "berhasil dihapus", "Success", JOptionPane.INFORMATION_MESSAGE);
-                refreshTable();
-            } else {
-                JOptionPane.showMessageDialog(v, "gagal menghapus data!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(v, "Tidak ada data yg dipilih", "Error", JOptionPane.ERROR_MESSAGE);
+    public void deleteData(String id) {
+        DBHelper helper = new DBHelper();
+        if(helper.removeMember(id)){
+            JOptionPane.showMessageDialog(v, "Data berhasil dihapus", "Success", JOptionPane.INFORMATION_MESSAGE);
+            refreshTable();
+        }else{
+            JOptionPane.showMessageDialog(v, "gagal menghapus data", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
